@@ -1,25 +1,24 @@
 body {
-  padding: 20px;
+  padding: 30px;
   position: relative;
-  background-color: #99A0A0;
+  background-color: #fff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
 }
 #nodeunit-tests {
   list-style-type: none;
-  background-color: #E0E0E0;
-  border-radius: 0 0 10px 10px;
-  margin-top: 85px;
+  margin-top: 101px;
   padding: 0;
-  border: 1px solid #505050;
+  border: 1px solid #DBDBDB;
   border-top: none;
   font-size: 14px;
 }
 li {
   padding: 10px;
-  border-bottom: 1px dashed #b3b3b3;
+  border-bottom: 1px dashed #DBDBDB;
   cursor: pointer;
 }
-li:hover {
-  background-color: #C6CACC;
+li:hover, li:hover li {
+  background-color: #FAFAFA;
   border-bottom-style: solid;
 }
 li li, li:hover li, li:last-child {
@@ -29,36 +28,38 @@ li strong {
   font-weight: normal;
 }
 li.pass, b.pass {
-  color: #276D00;
+  color: #6D9606!important;
 }
 li.fail, b.fail {
-  color: #AF4040;
+  color: #B44646!important;
 }
 #nodeunit-testresult {
   position: absolute;
-  left: 20px;
-  right: 20px;
+  left: 30px;
+  right: 30px;
   margin: 0;
   top: 60px;
-  border-radius: 10px 10px 0 0;
+  border-radius: 6px 6px 0 0;
   padding: 15px 15px 5px 15px;
   font-size: 16px;
-  background-color: #476472;
+  background: #2E7BD0 url('http://denis.io/clase/images/header-bg.jpg') 0 0 repeat-x;
   height: 50px;
-  color: #EEE;
-  text-shadow: 1px 1px #000;
-  border: 1px solid #505050;
+  color: #fff;
+  border: 1px solid #636363;
   border-bottom: none;
+  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif-webkit-body;
 }
 span.passed {
   color: #C7FFC7;
+  font-weight: bold;
 }
 #nodeunit-userAgent {
-  font-size: 14px;
-  color: #EEE;
+  font-size: 12px;
+  color: #474747;
   font-weight: normal;
   padding: 5px;
-  text-shadow: 1px 1px #242424;
+  position: absolute;
+  top: 0;
 }
 #nodeunit-header, #nodeunit-banner {
   display: none;
