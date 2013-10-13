@@ -1,4 +1,4 @@
-# clase [![NPM version](https://badge.fury.io/js/clase.png)](http://badge.fury.io/js/clase)
+# clase [![Build Status](https://travis-ci.org/dciccale/clase.png?branch=master)](https://travis-ci.org/dciccale/clase) [![NPM version](https://badge.fury.io/js/clase.png)](http://badge.fury.io/js/clase)
 
 JavaScript inheritance implementation.
 
