@@ -1,0 +1,65 @@
+body {
+  padding: 20px;
+  position: relative;
+  background-color: #99A0A0;
+}
+#nodeunit-tests {
+  list-style-type: none;
+  background-color: #E0E0E0;
+  border-radius: 0 0 10px 10px;
+  margin-top: 85px;
+  padding: 0;
+  border: 1px solid #505050;
+  border-top: none;
+  font-size: 14px;
+}
+li {
+  padding: 10px;
+  border-bottom: 1px dashed #b3b3b3;
+  cursor: pointer;
+}
+li:hover {
+  background-color: #C6CACC;
+  border-bottom-style: solid;
+}
+li li, li:hover li, li:last-child {
+  border: none;
+}
+li strong {
+  font-weight: normal;
+}
+li.pass, b.pass {
+  color: #276D00;
+}
+li.fail, b.fail {
+  color: #AF4040;
+}
+#nodeunit-testresult {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  margin: 0;
+  top: 60px;
+  border-radius: 10px 10px 0 0;
+  padding: 15px 15px 5px 15px;
+  font-size: 16px;
+  background-color: #476472;
+  height: 50px;
+  color: #EEE;
+  text-shadow: 1px 1px #000;
+  border: 1px solid #505050;
+  border-bottom: none;
+}
+span.passed {
+  color: #C7FFC7;
+}
+#nodeunit-userAgent {
+  font-size: 14px;
+  color: #EEE;
+  font-weight: normal;
+  padding: 5px;
+  text-shadow: 1px 1px #242424;
+}
+#nodeunit-header, #nodeunit-banner {
+  display: none;
+}

@@ -1,11 +1,16 @@
-var Clase = require('../lib/clase').Clase;
-var _ = require('underscore');
-var Backbone = require('backbone');
-var requirejs = require('requirejs');
+// running tests in node
+if (typeof exports !== 'undefined' && typeof module !== 'undefined' && module.exports) {
+  var Clase = require('../lib/clase').Clase;
+  var Backbone = require('backbone');
+  var requirejs = require('requirejs');
+  requirejs.config({
+    nodeRequire: require
+  });
 
-requirejs.config({
-  nodeRequire: require
-});
+// running tests in the browser
+} else {
+  exports = {};
+}
 
 exports['Clase is defined'] = function (test) {
   var isDefined = !!Clase;
