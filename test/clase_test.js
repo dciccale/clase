@@ -241,9 +241,9 @@ exports['Can create a class passing three plain objects'] = function (test) {
 
 exports['Should not have __super__ property when passing three objects'] = function (test) {
   var MyClass = Clase(
-    {name: 'obj1'},
-    {name: 'obj2'},
-    {name: 'static'}
+    {color: 'red'},
+    {color: 'blue'},
+    {color: 'static'}
   );
 
   test.deepEqual(MyClass.__super__, undefined);
@@ -252,19 +252,19 @@ exports['Should not have __super__ property when passing three objects'] = funct
 
 exports['Can extend two already created classes into a new one'] = function (test) {
   var MyClass = Clase({
-    constructor: function (name) {
-      this.name = name;
+    constructor: function (color) {
+      this.color = color;
     }
   });
   var MyClass2 = Clase({
-    getName: function () {
-      return this.name;
+    getColor: function () {
+      return this.color;
     }
   });
   var MyClass3 = Clase(MyClass, MyClass2);
-  var myclass3 = new MyClass3('ramon');
+  var myclass3 = new MyClass3('red');
 
-  test.deepEqual(myclass3.getName(), 'ramon');
+  test.deepEqual(myclass3.getColor(), 'red');
   test.deepEqual(MyClass.__super__, undefined);
   test.deepEqual(MyClass2.__super__, undefined);
   test.deepEqual(MyClass3.__super__, MyClass.prototype);
