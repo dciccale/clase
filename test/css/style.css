@@ -64,3 +64,19 @@ span.passed {
 #nodeunit-header, #nodeunit-banner {
   display: none;
 }
+#btn-run {
+  position: absolute;
+  right: 50px;
+  top: 77px;
+  padding: 10px;
+  background-color: #FFF;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #636363;
+  border: 1px solid #9E9E9E;
+  z-index: 1;
+}
+#btn-run:hover {
+  color: #000;
+  border-color: #5A5A5A;
+}

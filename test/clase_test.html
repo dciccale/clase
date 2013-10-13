@@ -12,10 +12,18 @@
     <script src="clase_test.js"></script>
   </head>
   <body>
+    <span id="btn-run">Run</span>
     <script>
-      nodeunit.run({
-        suite: exports
-      });
+      (function () {
+        var nodeunit_tests;
+        var run = function () {
+          nodeunit.run({'suite': exports});
+          nodeunit_tests = nodeunit_tests || document.getElementById('nodeunit-tests');
+          if (nodeunit_tests) nodeunit_tests.innerHTML = '';
+        };
+        document.getElementById('btn-run').addEventListener('click', run);
+        run();
+      }());
     </script>
   </body>
 </html>
