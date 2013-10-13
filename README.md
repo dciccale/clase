@@ -19,5 +19,8 @@ $ npm install
 $ npm test
 ```
 
+Thanks to my inspirations: JSFace by Tan Nhu, my.Class by Jie Meng-Gerard, simple inheritance by
+John Resig, and Underscore.js by Jeremy Ashkenas.
+
 ## License
 See [LICENSE.txt](https://raw.github.com/dciccale/parsy/master/LICENSE.txt)
