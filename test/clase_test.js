@@ -11,7 +11,7 @@ if (typeof exports !== 'undefined' && typeof module !== 'undefined' && module.ex
 
 // running tests in the browser
 } else {
-  exports = {};
+  var exports = {};
 }
 
 exports['Clase is defined'] = function (test) {
