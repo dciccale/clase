@@ -7,7 +7,7 @@ body {
   list-style-type: none;
   background-color: #E0E0E0;
   border-radius: 0 0 10px 10px;
-  margin-top: 85px;
+  margin-top: 111px;
   padding: 0;
   border: 1px solid #505050;
   border-top: none;
@@ -59,6 +59,8 @@ span.passed {
   font-weight: normal;
   padding: 5px;
   text-shadow: 1px 1px #242424;
+  position: absolute;
+  top: 0;
 }
 #nodeunit-header, #nodeunit-banner {
   display: none;
