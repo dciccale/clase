@@ -162,4 +162,4 @@ Open the [test/clase_test.html](http://denis.io/clase/test/clase_test.html)
 
 
 ## License
-See [LICENSE.txt](https://raw.github.com/dciccale/parsy/master/LICENSE.txt)
+See [LICENSE.txt](https://raw.github.com/dciccale/clase/master/LICENSE.txt)
