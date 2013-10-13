@@ -16,9 +16,12 @@ See `test/clase_test.js`.
 
 ## Running the Unit Tests
 
-#### From the command-line
 ```bash
 $ npm install
+```
+
+#### From the command-line
+```bash
 $ npm test
 ```
 
