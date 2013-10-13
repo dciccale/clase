@@ -257,14 +257,18 @@ exports['Can extend two already created classes into a new one'] = function (tes
     }
   });
   var MyClass2 = Clase({
+    constructor: function (color, number) {
+      this._super(color);
+      this.number = number;
+    },
     getColor: function () {
-      return this.color;
+      return this.color + ' is #' + this.number;
     }
   });
   var MyClass3 = Clase(MyClass, MyClass2);
-  var myclass3 = new MyClass3('red');
+  var myclass3 = new MyClass3('red', 3);
 
-  test.deepEqual(myclass3.getColor(), 'red');
+  test.deepEqual(myclass3.getColor(), 'red is #3');
   test.deepEqual(MyClass.__super__, undefined);
   test.deepEqual(MyClass2.__super__, undefined);
   test.deepEqual(MyClass3.__super__, MyClass.prototype);
