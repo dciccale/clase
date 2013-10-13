@@ -15,9 +15,9 @@
     <span id="btn-run">Run</span>
     <script>
       nodeunit.run({'suite': exports});
-      document.getElementById('btn-run').addEventListener('click', function () {
+      document.getElementById('btn-run').onclick = function() {
         window.location.reload();
-      });
+      };
     </script>
   </body>
 </html>
