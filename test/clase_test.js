@@ -31,45 +31,45 @@ exports['Can create an empty class'] = function (test) {
 
 exports['Can create a class with a constructor'] = function (test) {
   var MyClass = Clase({
-    constructor: function (name) {
-      this.name = name;
+    constructor: function (color) {
+      this.color = color;
     }
   });
   var myclass = new MyClass('test');
 
   test.deepEqual(MyClass, MyClass.prototype.constructor);
   test.deepEqual(myclass.constructor, MyClass.prototype.constructor);
-  test.deepEqual(myclass.name, 'test');
+  test.deepEqual(myclass.color, 'test');
   test.done();
 };
 
 exports['Can extend a class'] = function (test) {
   var MyClass = Clase({
-    constructor: function (name) {
-      this.name = name;
+    constructor: function (color) {
+      this.color = color;
     }
   });
   var MyClass2 = Clase(MyClass, {
-    getName: function () {
-      return this.name;
+    getColor: function () {
+      return this.color;
     }
   });
   var myclass2 = new MyClass2('test');
 
-  test.deepEqual(myclass2.getName(), 'test');
+  test.deepEqual(myclass2.getColor(), 'test');
   test.deepEqual(MyClass2.__super__, MyClass.prototype);
   test.done();
 };
 
 exports['The __super__ property should point to the parent prototype'] = function (test) {
   var MyClass = Clase({
-    constructor: function (name) {
-      this.name = name;
+    constructor: function (color) {
+      this.color = color;
     }
   });
   var MyClass2 = Clase(MyClass, {
-    getName: function () {
-      return this.name;
+    getColor: function () {
+      return this.color;
     }
   });
 
@@ -79,8 +79,8 @@ exports['The __super__ property should point to the parent prototype'] = functio
 
 exports['There should be No __super__ property if no parent'] = function (test) {
   var MyClass = Clase({
-    constructor: function (name) {
-      this.name = name;
+    constructor: function (color) {
+      this.color = color;
     }
   });
 
@@ -90,40 +90,40 @@ exports['There should be No __super__ property if no parent'] = function (test) 
 
 exports['Can call _super method'] = function (test) {
   var MyClass = Clase({
-    constructor: function (name) {
-      this.name = name;
+    constructor: function (color) {
+      this.color = color;
     },
-    getName: function () {
-      return this.name;
+    getColor: function () {
+      return this.color;
     }
   });
   var MyClass2 = Clase(MyClass, {
-    getName: function () {
+    getColor: function () {
       return this._super();
     }
   });
   var myclass2 = new MyClass2('test');
 
-  test.deepEqual(myclass2.getName(), 'test');
+  test.deepEqual(myclass2.getColor(), 'test');
   test.deepEqual(MyClass2.__super__, MyClass.prototype);
   test.done();
 };
 
 exports['Can extend a class constructor'] = function (test) {
   var MyClass = Clase({
-    constructor: function (name) {
-      this.name = name;
+    constructor: function (color) {
+      this.color = color;
     }
   });
   var MyClass2 = Clase(MyClass, {
-    constructor: function (name, age) {
-      this.name = name;
+    constructor: function (color, age) {
+      this.color = color;
       this.age = age;
     }
   });
-  var myclass2 = new MyClass2('ramon', 43);
+  var myclass2 = new MyClass2('red', 43);
 
-  test.deepEqual(myclass2.name, 'ramon');
+  test.deepEqual(myclass2.color, 'red');
   test.deepEqual(myclass2.age, 43);
   test.deepEqual(MyClass2.__super__, MyClass.prototype);
   test.done();
@@ -131,21 +131,21 @@ exports['Can extend a class constructor'] = function (test) {
 
 exports['Can extend a class constructor even if is not the first property'] = function (test) {
   var MyClass = Clase({
-    constructor: function (name) {
-      this.name = name;
+    constructor: function (color) {
+      this.color = color;
     }
   });
   var MyClass2 = Clase(MyClass, {
     alive: false,
-    constructor: function (name, age) {
-      this._super(name);
+    constructor: function (color, age) {
+      this._super(color);
       this.age = age;
     }
   });
-  var myclass2 = new MyClass2('ramon', 43);
+  var myclass2 = new MyClass2('red', 43);
 
   test.deepEqual(myclass2.constructor, MyClass2.prototype.constructor);
-  test.deepEqual(myclass2.name, 'ramon');
+  test.deepEqual(myclass2.color, 'red');
   test.deepEqual(myclass2.alive, false);
   test.deepEqual(myclass2.age, 43);
   test.deepEqual(MyClass2.__super__, MyClass.prototype);
@@ -154,30 +154,30 @@ exports['Can extend a class constructor even if is not the first property'] = fu
 
 exports['Can call _super method in the constructor'] = function (test) {
   var MyClass = Clase({
-    constructor: function (name) {
-      this.name = name;
+    constructor: function (color) {
+      this.color = color;
     }
   });
   var MyClass2 = Clase(MyClass, {
-    constructor: function (name, age) {
-      this._super(name);
+    constructor: function (color, age) {
+      this._super(color);
       this.age = age;
     },
-    getName: function () {
-      return this.name + ' is ' + this.age;
+    getColor: function () {
+      return this.color + ' is ' + this.age;
     }
   });
-  var myclass2 = new MyClass2('ramon', 43);
+  var myclass2 = new MyClass2('red', 43);
 
-  test.deepEqual(myclass2.getName(), 'ramon is 43');
+  test.deepEqual(myclass2.getColor(), 'red is 43');
   test.deepEqual(MyClass2.__super__, MyClass.prototype);
   test.done();
 };
 
 exports['Can create static members with second parameter if the first is an object'] = function (test) {
   var MyClass = Clase({
-    constructor: function (name) {
-      this.name = name;
+    constructor: function (color) {
+      this.color = color;
     }
   }, {
     isStatic: true
@@ -190,17 +190,17 @@ exports['Can create static members with second parameter if the first is an obje
 
 exports['Can create static members when extending a class'] = function (test) {
   var MyClass = Clase({
-    constructor: function (name) {
-      this.name = name;
+    constructor: function (color) {
+      this.color = color;
     }
   });
   var MyClass2 = Clase(MyClass, {
-    constructor: function (name, age) {
-      this._super(name);
+    constructor: function (color, age) {
+      this._super(color);
       this.age = age;
     },
-    getName: function () {
-      return this.name + ' is ' + this.age;
+    getColor: function () {
+      return this.color + ' is ' + this.age;
     }
   }, {
     isStatic: true
@@ -216,24 +216,24 @@ exports['Can create a class passing three plain objects'] = function (test) {
   // second object is used to extend the first one as prototype
   // third object is used for static members
   var MyClass = Clase({
-    constructor: function (name) {
-      this.name = name;
+    constructor: function (color) {
+      this.color = color;
     }
   }, {
-    constructor: function (name, age) {
-      this._super(name);
+    constructor: function (color, age) {
+      this._super(color);
       this.age = age;
     },
-    getName: function () {
-      return this.name + ' is ' + this.age;
+    getColor: function () {
+      return this.color + ' is ' + this.age;
     }
   }, {
     isStatic: true
   });
-  var myclass = new MyClass('ramon', 43);
+  var myclass = new MyClass('red', 43);
 
   test.deepEqual(MyClass.__super__, undefined);
-  test.deepEqual(myclass.getName(), 'ramon is 43');
+  test.deepEqual(myclass.getColor(), 'red is 43');
   test.deepEqual(MyClass.isStatic, true);
   test.deepEqual(MyClass.__super__, undefined);
   test.done();
@@ -241,9 +241,9 @@ exports['Can create a class passing three plain objects'] = function (test) {
 
 exports['Should not have __super__ property when passing three objects'] = function (test) {
   var MyClass = Clase(
-    {name: 'obj1'},
-    {name: 'obj2'},
-    {name: 'static'}
+    {color: 'red'},
+    {color: 'blue'},
+    {color: 'static'}
   );
 
   test.deepEqual(MyClass.__super__, undefined);
@@ -252,19 +252,19 @@ exports['Should not have __super__ property when passing three objects'] = funct
 
 exports['Can extend two already created classes into a new one'] = function (test) {
   var MyClass = Clase({
-    constructor: function (name) {
-      this.name = name;
+    constructor: function (color) {
+      this.color = color;
     }
   });
   var MyClass2 = Clase({
-    getName: function () {
-      return this.name;
+    getColor: function () {
+      return this.color;
     }
   });
   var MyClass3 = Clase(MyClass, MyClass2);
-  var myclass3 = new MyClass3('ramon');
+  var myclass3 = new MyClass3('red');
 
-  test.deepEqual(myclass3.getName(), 'ramon');
+  test.deepEqual(myclass3.getColor(), 'red');
   test.deepEqual(MyClass.__super__, undefined);
   test.deepEqual(MyClass2.__super__, undefined);
   test.deepEqual(MyClass3.__super__, MyClass.prototype);
@@ -273,23 +273,23 @@ exports['Can extend two already created classes into a new one'] = function (tes
 
 exports['Can extend two already created classes constructor'] = function (test) {
   var MyClass = Clase({
-    constructor: function (name) {
-      this.name = name;
+    constructor: function (color) {
+      this.color = color;
     }
   });
   var MyClass2 = Clase({
-    constructor: function (name, age) {
-      this._super(name);
+    constructor: function (color, age) {
+      this._super(color);
       this.age = age;
     },
-    getName: function () {
-      return this.name + ' is ' + this.age;
+    getColor: function () {
+      return this.color + ' is ' + this.age;
     }
   });
   var MyClass3 = Clase(MyClass, MyClass2);
-  var myclass3 = new MyClass3('ramon', 43);
+  var myclass3 = new MyClass3('red', 43);
 
-  test.deepEqual(myclass3.getName(), 'ramon is 43');
+  test.deepEqual(myclass3.getColor(), 'red is 43');
   test.deepEqual(MyClass.__super__, undefined);
   test.deepEqual(MyClass2.__super__, undefined);
   test.deepEqual(MyClass3.__super__, MyClass.prototype);
@@ -299,12 +299,12 @@ exports['Can extend two already created classes constructor'] = function (test) 
 exports['Can extend Backbone.Model'] = function (test) {
   var MyModel = Clase(Backbone.Model, {
     initialize: function () {
-      this.set('name', 'ramon');
+      this.set('color', 'red');
     }
   });
   var mymodel = new MyModel();
 
-  test.deepEqual(mymodel.get('name'), 'ramon');
+  test.deepEqual(mymodel.get('color'), 'red');
   mymodel.set('age', 43);
   test.deepEqual(mymodel.get('age'), 43);
   test.deepEqual(MyModel.__super__, Backbone.Model.prototype);
@@ -314,7 +314,7 @@ exports['Can extend Backbone.Model'] = function (test) {
 exports['Can call _super on Backbone.Model methods'] = function (test) {
   var MyModel = Clase(Backbone.Model, {
     initialize: function () {
-      this.set('name', 'ramon');
+      this.set('color', 'red');
     }
   });
   var MyModel2 = Clase(MyModel, {
@@ -326,7 +326,7 @@ exports['Can call _super on Backbone.Model methods'] = function (test) {
 
   var mymodel2 = new MyModel2();
 
-  test.deepEqual(mymodel2.get('name'), 'ramon');
+  test.deepEqual(mymodel2.get('color'), 'red');
   test.deepEqual(mymodel2.get('age'), 43);
   test.deepEqual(MyModel.__super__, Backbone.Model.prototype);
   test.deepEqual(MyModel2.__super__, MyModel.prototype);
