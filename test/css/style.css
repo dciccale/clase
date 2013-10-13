@@ -1,22 +1,20 @@
 body {
-  padding: 20px;
+  padding: 30px;
   position: relative;
-  background-color: #E9E9E9;
+  background-color: #fff;
   font-family: 'Helvetica Neue', Helvetica, Arial, serif;
 }
 #nodeunit-tests {
   list-style-type: none;
-  background-color: #E0E0E0;
-  margin-top: 111px;
+  margin-top: 101px;
   padding: 0;
-  border: 1px solid #C9C9C9;
+  border: 1px solid #DBDBDB;
   border-top: none;
   font-size: 14px;
 }
 li {
   padding: 10px;
-  border-bottom: 1px dashed #c9c9c9;
-  background-color: #F1F1F1;
+  border-bottom: 1px dashed #DBDBDB;
   cursor: pointer;
 }
 li:hover, li:hover li {
@@ -30,15 +28,15 @@ li strong {
   font-weight: normal;
 }
 li.pass, b.pass {
-  color: #6D9606;
+  color: #6D9606!important;
 }
 li.fail, b.fail {
-  color: #B44646;
+  color: #B44646!important;
 }
 #nodeunit-testresult {
   position: absolute;
-  left: 20px;
-  right: 20px;
+  left: 30px;
+  right: 30px;
   margin: 0;
   top: 60px;
   border-radius: 6px 6px 0 0;
