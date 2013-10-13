@@ -26,7 +26,7 @@ $ npm test
 ```
 
 #### In the browser
-Open [test/clase_test.html](http://denis.io/clase/clase_test.html)
+Open the [clase_test.html](http://denis.io/clase/clase_test.html)
 
 
 ## License
