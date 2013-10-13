@@ -26,7 +26,7 @@ $ npm test
 ```
 
 #### In the browser
-Open `test/clase_test.html`
+Open [test/clase_test.html](https://github.com/dciccale/clase/blob/master/test/clase_test.html)
 
 
 ## License
