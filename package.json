@@ -1,7 +1,7 @@
 {
   "name": "clase",
   "description": "JavaScript inheritance",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Denis Ciccale (@tdecs)",
   "homepage": "http://github.com/dciccale/clase",
   "readmeFilename": "README.md",
@@ -18,7 +18,7 @@
       "url": "https://github.com/dciccale/clase/blob/master/LICENSE.txt"
     }
   ],
-  "main": "./lib/clase",
+  "main": "./lib/clase.js",
   "scripts": {
     "test": "./node_modules/.bin/nodeunit test"
   },
@@ -26,6 +26,7 @@
     "nodeunit": "0.8.1",
     "nodeunit-watcher": "0.0.3",
     "underscore": "1.5.2",
-    "backbone": "1.1.0"
+    "backbone": "1.1.0",
+    "requirejs": "2.1.8"
   }
 }

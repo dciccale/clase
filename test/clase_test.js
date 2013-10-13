@@ -1,6 +1,11 @@
 var Clase = require('../lib/clase').Clase;
 var _ = require('underscore');
 var Backbone = require('backbone');
+var requirejs = require('requirejs');
+
+requirejs.config({
+  nodeRequire: require
+});
 
 exports['Clase is defined'] = function (test) {
   var isDefined = !!Clase;
@@ -320,4 +325,11 @@ exports['Can call _super on Backbone.Model methods'] = function (test) {
   test.deepEqual(MyModel.__super__, Backbone.Model.prototype);
   test.deepEqual(MyModel2.__super__, MyModel.prototype);
   test.done();
+};
+
+exports['Supports AMD loading'] = function (test) {
+  requirejs(['../lib/clase'], function (_Clase) {
+    test.deepEqual(_Clase, Clase);
+    test.done();
+  });
 };
