@@ -1,7 +1,7 @@
 {
   "name": "clase",
   "description": "JavaScript inheritance",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Denis Ciccale (@tdecs)",
   "homepage": "http://github.com/dciccale/clase",
   "readmeFilename": "README.md",
@@ -20,13 +20,16 @@
   ],
   "main": "./lib/clase.js",
   "scripts": {
-    "test": "./node_modules/.bin/nodeunit test"
+    "test": "grunt test"
   },
   "devDependencies": {
-    "nodeunit": "0.8.1",
-    "nodeunit-watcher": "0.0.3",
     "underscore": "1.5.2",
     "backbone": "1.1.0",
-    "requirejs": "2.1.8"
+    "requirejs": "2.1.8",
+    "grunt-contrib-jshint": "0.6.4",
+    "grunt-contrib-nodeunit": "0.2.1",
+    "grunt-contrib-uglify": "0.2.4",
+    "grunt-contrib-watch": "0.5.3",
+    "grunt": "0.4.1"
   }
 }

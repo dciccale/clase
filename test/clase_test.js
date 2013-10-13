@@ -1,3 +1,5 @@
+'use strict';
+
 // running tests in node
 if (typeof exports !== 'undefined' && typeof module !== 'undefined' && module.exports) {
   var Clase = require('../lib/clase').Clase;
@@ -243,7 +245,6 @@ exports['Should not have __super__ property when passing three objects'] = funct
     {name: 'obj2'},
     {name: 'static'}
   );
-  var myclass = new MyClass();
 
   test.deepEqual(MyClass.__super__, undefined);
   test.done();
@@ -297,14 +298,14 @@ exports['Can extend two already created classes constructor'] = function (test) 
 
 exports['Can extend Backbone.Model'] = function (test) {
   var MyModel = Clase(Backbone.Model, {
-    initialize: function (name) {
+    initialize: function () {
       this.set('name', 'ramon');
     }
   });
   var mymodel = new MyModel();
 
   test.deepEqual(mymodel.get('name'), 'ramon');
-  mymodel.set('age', 43)
+  mymodel.set('age', 43);
   test.deepEqual(mymodel.get('age'), 43);
   test.deepEqual(MyModel.__super__, Backbone.Model.prototype);
   test.done();
