@@ -31,5 +31,6 @@
     "grunt-contrib-uglify": "0.2.4",
     "grunt-contrib-watch": "0.5.3",
     "grunt": "0.4.1"
-  }
+  },
+  "keywords": ["class", "inheritance", "prototype", "constructor", "backbone"]
 }
