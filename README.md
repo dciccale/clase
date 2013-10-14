@@ -12,7 +12,6 @@ $ npm install clase
 ```
 
 ## Examples
-See `test/clase_test.js`.
 
 Create a Class with a constructor
 ```javascript
@@ -49,7 +48,7 @@ var MyClass2 = Clase(MyClass, {
 var myclass2 = new MyClass2('red', 3);
 myclass2.color; // 'red'
 // __super__ stores the parent prototype
-myclass2.number = 3;
+myclass2.number; // 3;
 ```
 
 Create static members with a second objecto when creating the class for the first time
@@ -153,12 +152,14 @@ $ npm install
 ```
 
 #### From the command-line
+
 ```bash
-$ npm test
+$ grunt test
 ```
 
 #### In the browser
-Open the [test/clase_test.html](http://denis.io/clase/test/clase_test.html)
+
+Open `test/clase_test.html` ([online](http://denis.io/clase/test/clase_test.html))
 
 
 ## License
