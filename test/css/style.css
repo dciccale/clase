@@ -1,16 +1,18 @@
 body {
-  padding: 30px;
+  padding: 20px 30px 30px;
   position: relative;
   background-color: #fff;
   font-family: 'Helvetica Neue', Helvetica, Arial, serif;
 }
-#nodeunit-tests {
-  list-style-type: none;
-  margin-top: 101px;
-  padding: 0;
-  border: 1px solid #DBDBDB;
-  border-top: none;
-  font-size: 14px;
+h1 {
+  margin: 0;
+  color: #474747;
+  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif-webkit-body;
+}
+h1:before {
+  content: "//";
+  color: #9DDCFF;
+  padding-right: 0.3em;
 }
 li {
   padding: 10px;
@@ -33,12 +35,22 @@ li.pass, b.pass {
 li.fail, b.fail {
   color: #B44646!important;
 }
+#nodeunit-tests {
+  list-style-type: none;
+  margin-top: 111px;
+  padding: 0;
+  border: 1px solid #DBDBDB;
+  border-top: none;
+  font-size: 14px;
+}
 #nodeunit-testresult {
   position: absolute;
   left: 30px;
   right: 30px;
   margin: 0;
-  top: 60px;
+  top: 100px;
+  -moz-border-radius: 6px 6px 0 0;
+  -webkit-border-radius: 6px 6px 0 0;
   border-radius: 6px 6px 0 0;
   padding: 15px 15px 5px 15px;
   font-size: 16px;
@@ -49,17 +61,17 @@ li.fail, b.fail {
   border-bottom: none;
   font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif-webkit-body;
 }
-span.passed {
-  color: #C7FFC7;
-  font-weight: bold;
-}
 #nodeunit-userAgent {
   font-size: 12px;
   color: #474747;
   font-weight: normal;
   padding: 5px;
   position: absolute;
-  top: 0;
+  top: 50px;
+}
+span.passed {
+  color: #C7FFC7;
+  font-weight: bold;
 }
 #nodeunit-header, #nodeunit-banner {
   display: none;
@@ -67,7 +79,7 @@ span.passed {
 #btn-run {
   position: absolute;
   right: 50px;
-  top: 77px;
+  top: 115px;
   padding: 10px;
   background-color: #FFF;
   border-radius: 4px;
