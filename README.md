@@ -49,7 +49,7 @@ var MyClass2 = Clase(MyClass, {
 var myclass2 = new MyClass2('red', 3);
 myclass2.color; // 'red'
 // __super__ stores the parent prototype
-myclass2.number = 3;
+myclass2.number; // 3;
 ```
 
 Create static members with a second objecto when creating the class for the first time
