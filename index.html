@@ -46,7 +46,137 @@ John Resig, and Underscore.js by Jeremy Ashkenas.</p>
 <h2>
 <a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
 
-<p>See <a href="https://github.com/dciccale/clase/blob/master/test/clase_test.js">test/clase_test.js</a>.</p>
+<p>Create a Class with a constructor</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">MyClass</span> <span class="o">=</span> <span class="nx">Clase</span><span class="p">({</span>
+  <span class="nx">constructor</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">color</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="nx">color</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="kd">var</span> <span class="nx">myclass</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyClass</span><span class="p">(</span><span class="s1">'blue'</span><span class="p">);</span>
+<span class="nx">myclass</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span> <span class="c1">// 'blue'</span>
+</pre></div>
+
+<p>Extend another class</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">MyClass2</span> <span class="o">=</span> <span class="nx">Clase</span><span class="p">(</span><span class="nx">MyClass</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">getColor</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">color</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="kd">var</span> <span class="nx">myclass2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyClass2</span><span class="p">(</span><span class="s1">'red'</span><span class="p">);</span>
+<span class="nx">myclass2</span><span class="p">.</span><span class="nx">getColor</span><span class="p">();</span> <span class="c1">// 'red'</span>
+<span class="c1">// __super__ stores the parent prototype</span>
+<span class="nx">MyClass2</span><span class="p">.</span><span class="nx">__super__</span><span class="p">;</span>
+</pre></div>
+
+<p>Extend the constructor or any method calling <code>_super()</code></p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">MyClass2</span> <span class="o">=</span> <span class="nx">Clase</span><span class="p">(</span><span class="nx">MyClass</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">color</span><span class="p">,</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_super</span><span class="p">(</span><span class="nx">color</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">number</span> <span class="o">=</span> <span class="nx">number</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="kd">var</span> <span class="nx">myclass2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyClass2</span><span class="p">(</span><span class="s1">'red'</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="nx">myclass2</span><span class="p">.</span><span class="nx">color</span><span class="p">;</span> <span class="c1">// 'red'</span>
+<span class="c1">// __super__ stores the parent prototype</span>
+<span class="nx">myclass2</span><span class="p">.</span><span class="nx">number</span><span class="p">;</span> <span class="c1">// 3;</span>
+</pre></div>
+
+<p>Create static members with a second objecto when creating the class for the first time</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">MyClass</span> <span class="o">=</span> <span class="nx">Clase</span><span class="p">({</span>
+  <span class="nx">constructor</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">color</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="nx">color</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">},</span> <span class="p">{</span>
+  <span class="nx">isStatic</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+<span class="nx">MyClass</span><span class="p">.</span><span class="nx">isStatic</span><span class="p">;</span> <span class="c1">// true</span>
+</pre></div>
+
+<p>Or create static members when extending from another class with the third argument</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">MyClass2</span> <span class="o">=</span> <span class="nx">Clase</span><span class="p">(</span><span class="nx">MyClass</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">color</span><span class="p">,</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_super</span><span class="p">(</span><span class="nx">color</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">number</span> <span class="o">=</span> <span class="nx">number</span><span class="p">;</span>
+  <span class="p">},</span>
+  <span class="nx">getColor</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">'color '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">color</span> <span class="o">+</span> <span class="s1">' is #'</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">number</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">},</span> <span class="p">{</span>
+  <span class="nx">isStatic</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+<span class="nx">MyClass2</span><span class="p">.</span><span class="nx">isStatic</span><span class="p">;</span> <span class="c1">// true</span>
+</pre></div>
+
+<p>Or create create a class passing three objects:</p>
+
+<ul>
+<li>The first one will be the parent</li>
+<li>The second will extend the parent</li>
+<li>The third extends static members</li>
+</ul><div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">MyClass</span> <span class="o">=</span> <span class="nx">Clase</span><span class="p">({</span>
+  <span class="nx">constructor</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">color</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="nx">color</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">},</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">color</span><span class="p">,</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_super</span><span class="p">(</span><span class="nx">color</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">number</span> <span class="o">=</span> <span class="nx">number</span><span class="p">;</span>
+  <span class="p">},</span>
+  <span class="nx">getColor</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">'color '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">color</span> <span class="o">+</span> <span class="s1">' is #'</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">number</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">},</span> <span class="p">{</span>
+  <span class="nx">isStatic</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+<span class="kd">var</span> <span class="nx">myclass</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyClass</span><span class="p">(</span><span class="s1">'red'</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="nx">myclass</span><span class="p">.</span><span class="nx">getColor</span><span class="p">();</span> <span class="c1">// 'color red is #3'</span>
+</pre></div>
+
+<p>Extend two already created classes into a new one</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">MyClass</span> <span class="o">=</span> <span class="nx">Clase</span><span class="p">({</span>
+  <span class="nx">constructor</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">color</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="nx">color</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="kd">var</span> <span class="nx">MyClass2</span> <span class="o">=</span> <span class="nx">Clase</span><span class="p">({</span>
+  <span class="nx">constructor</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">color</span><span class="p">,</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_super</span><span class="p">(</span><span class="nx">color</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">number</span> <span class="o">=</span> <span class="nx">number</span><span class="p">;</span>
+  <span class="p">},</span>
+  <span class="nx">getColor</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">'color '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">color</span> <span class="o">+</span> <span class="s1">' is #'</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">number</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="kd">var</span> <span class="nx">MyClass3</span> <span class="o">=</span> <span class="nx">Clase</span><span class="p">(</span><span class="nx">MyClass</span><span class="p">,</span> <span class="nx">MyClass2</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">myclass3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyClass3</span><span class="p">(</span><span class="s1">'red'</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="nx">myclass3</span><span class="p">.</span><span class="nx">getColor</span><span class="p">();</span> <span class="c1">// 'color red is #3'</span>
+</pre></div>
+
+<p>It also supports extending Backbone objects, for example a Backbone.Model with the nice <code>_super()</code> method</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">MyModel</span> <span class="o">=</span> <span class="nx">Clase</span><span class="p">(</span><span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'color'</span><span class="p">,</span> <span class="s1">'red'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="kd">var</span> <span class="nx">MyModel2</span> <span class="o">=</span> <span class="nx">Clase</span><span class="p">(</span><span class="nx">MyModel</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_super</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'number'</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">mymodel2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyModel2</span><span class="p">();</span>
+
+<span class="nx">mymodel2</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'color'</span><span class="p">);</span> <span class="c1">// 'red'</span>
+<span class="nx">mymodel2</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'number'</span><span class="p">);</span> <span class="c1">// 3</span>
+</pre></div>
 
 <h2>
 <a name="running-the-unit-tests" class="anchor" href="#running-the-unit-tests"><span class="octicon octicon-link"></span></a>Running the Unit Tests</h2>
@@ -57,14 +187,13 @@ John Resig, and Underscore.js by Jeremy Ashkenas.</p>
 <h4>
 <a name="from-the-command-line" class="anchor" href="#from-the-command-line"><span class="octicon octicon-link"></span></a>From the command-line</h4>
 
-<div class="highlight highlight-bash"><pre><span class="nv">$ </span>npm <span class="nb">test</span>
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>grunt <span class="nb">test</span>
 </pre></div>
 
 <h4>
-<a name="in-the-browser" class="anchor" href="#in-the-browser"><span class="octicon
-    octicon-link"></span></a>In the browser (test/clase_test.html)</h4>
+<a name="in-the-browser" class="anchor" href="#in-the-browser"><span class="octicon octicon-link"></span></a>In the browser</h4>
 
-<iframe src="test/clase_test.html" id="iframe-tests"></iframe>
+<p>Open <code>test/clase_test.html</code> (<a href="http://denis.io/clase/test/clase_test.html">online</a>)</p>
 
 <h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
