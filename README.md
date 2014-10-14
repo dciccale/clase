@@ -154,7 +154,7 @@ $ npm install
 #### From the command-line
 
 ```bash
-$ grunt test
+$ make
 ```
 
 #### In the browser
