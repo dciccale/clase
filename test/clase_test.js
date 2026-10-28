@@ -338,6 +338,23 @@ exports['Can call _super on Backbone.Model methods'] = function (test) {
 };
 
 exports['Supports AMD loading'] = function (test) {
+  if (typeof module !== 'undefined' && module.exports) {
+    var fs = require('node:fs');
+    var vm = require('node:vm');
+    var amdExport;
+    var browser = {
+      define: function (factory) { amdExport = factory(); }
+    };
+    browser.define.amd = {};
+    vm.runInNewContext(fs.readFileSync(require.resolve('../lib/clase'), 'utf8'), {
+      window: browser
+    });
+    test.deepEqual(typeof amdExport, 'function');
+    test.deepEqual(amdExport, browser.Clase);
+    test.deepEqual(typeof amdExport({ color: 'red' }), 'function');
+    test.done();
+    return;
+  }
   requirejs(['../lib/clase'], function (_Clase) {
     test.deepEqual(_Clase, Clase);
     test.done();

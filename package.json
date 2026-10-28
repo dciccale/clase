@@ -1,7 +1,7 @@
 {
   "name": "clase",
   "description": "JavaScript inheritance",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Denis Ciccale (@tdecs)",
   "homepage": "http://denis.io/clase",
   "readmeFilename": "README.md",
@@ -25,10 +25,9 @@
   "devDependencies": {
     "backbone": "1.1.0",
     "jshint": "^2.5.6",
-    "nodeunit": "^0.9.0",
     "requirejs": "^2.1.15",
     "uglify-js": "^2.4.15",
-    "underscore": "1.5.2"
+    "underscore": "^1.13.8"
   },
   "keywords": [
     "class",
@@ -36,5 +35,9 @@
     "prototype",
     "constructor",
     "backbone"
-  ]
+  ],
+  "overrides": {
+    "lodash": "^4.18.1",
+    "minimatch@<4": "^3.1.5"
+  }
 }
