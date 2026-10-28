@@ -6,7 +6,7 @@ lint:
 	-@node ./node_modules/jshint/bin/jshint lib/clase.js
 
 test:
-	@node ./node_modules/nodeunit/bin/nodeunit
+	@node --test test/run.cjs
 
 build:
 	-@node ./node_modules/uglify-js/bin/uglifyjs lib/clase.js -m -c -o lib/clase.min.js

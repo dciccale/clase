@@ -153,6 +153,9 @@ $ npm install
 
 #### From the command-line
 
+Use Node.js 22 or later to run the tests.
+The Node.js test runner executes the existing test cases.
+
 ```bash
 $ make
 ```
